@@ -1,0 +1,242 @@
+<!doctype html>
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>物流表单智能识别系统</title>
+
+    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">-->
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/open-iconic-bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/fileupload.css}" rel="stylesheet">
+    <link th:href="@{/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootbox.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/bootstrap-filestyle.min.js}"></script>
+    <!--<script th:src="@{/js/bootstrap.bundle.min.js}"></script>-->
+    <script>
+        function loadFile() {
+            var title = $("#inputFile").val();
+
+            /**
+             * 获取上传文件大小进行判断
+             * @type {*|File}
+             */
+            var file = $("#inputFile")[0].files[0];
+            var vv = file.size;//文件的字节数
+            var maxSize = 1024 * 1024 * 10;
+            if (vv > maxSize) {
+                var r = confirm("文件太大(文件要小于2MB)，请重新上传！");
+                $(location).attr('href', '/');
+            } else {
+                var fileName = title.substring(title.lastIndexOf("\\") + 1);
+                var name = fileName.substring(fileName.indexOf(".") + 1).toLocaleLowerCase();
+                if (name == "pdf" || name == "doc" || name == "docx" || name == "jpg" || name == "png") {
+                    $("#fileName").val(fileName);
+                    var obj = document.getElementById("fileName");
+                    console.log(fileName);
+                    obj.setAttribute("title", fileName);
+                } else {
+                    alert("暂不支持解析此格式的文件，请重新选择")
+                }
+            }
+        }
+
+    </script>
+</head>
+<body class="d-flex flex-column h-100">
+<header>
+    <!-- Fixed navbar -->
+    <div class="container-fluid">
+        <div class="row" style="text-align: center">
+            <div class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#">物流表单智能识别</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api.html" th:href="@{/api}">API文档</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="form-div">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <form action="/parse" enctype="multipart/form-data" method="post">
+                        <h3 style="font-size: 1.25rem">单证提交</h3>
+                        <div class="bootstrap-filestyle input-group">
+                            <input type="text" id="fileName" class="form-control " placeholder="还未选择文件" disabled=""
+                                   style="border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem;border-top-right-radius: 0rem;border-bottom-right-radius: 0rem">
+                            <span class="group-span-filestyle input-group-btn" tabindex="0">
+                            <label for="inputFile"
+                                   style="margin-bottom: 0;border-top-left-radius: 0rem;border-bottom-left-radius: 0rem"
+                                   class="btn btn-secondary">
+                                <span class="buttonText">请选择文件</span>
+                            </label>
+                                <input type="hidden" id="current" value="未选择文件" th:value="${msg.data.fileName}"
+                                       th:if="${not #lists.isEmpty(msg) && not #lists.isEmpty(msg.data[fileName])}"/>
+                                <input type="hidden" id="error" th:value="${msg.data}"
+                                       th:if="${not #lists.isEmpty(msg)}"/>
+                                <input type="hidden" id="status" th:value="${msg.status}"
+                                       th:if="${not #lists.isEmpty(msg)}"/>
+                        </span>
+                            <input type="file" name="file" style="display: none" id="inputFile" onchange="loadFile()">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" style="margin-top: 10px"> 提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row" th:if="${not #lists.isEmpty(msg) && msg.status eq 0}">
+                <hr style="margin-top:0px; FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%"
+                    color="#76d275">
+                <div class="col-4">
+                    <h3 style="font-size: 1.25rem">单证内容</h3>
+                    <div class="div-table">
+                        <table class="table table-striped form-table table-bordered">
+                            <thead>
+                            <td>名称</td>
+                            <td>输出内容</td>
+                            </thead>
+                            <tbody>
+                            <tr th:if="${not #lists.isEmpty(msg.data['bookingNo'])}">
+                                <td th:text="提单号"></td>
+                                <td th:text="${msg.data['bookingNo']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['shipCompany'])}">
+                                <td th:text="船公司"></td>
+                                <td th:text="${msg.data['shipCompany']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['bargeShipName'])}">
+                                <td th:text="驳船船名"></td>
+                                <td th:text="${msg.data['bargeShipName']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['bargeLine'])}">
+                                <td th:text="驳船航次"></td>
+                                <td th:text="${msg.data['bargeLine']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['shipName'])}">
+                                <td th:text="船名"></td>
+                                <td th:text="${msg.data['shipName']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['line'])}">
+                                <td th:text="航次"></td>
+                                <td th:text="${msg.data['line']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['bargeFrom'])}">
+                                <td th:text="驳船起运港"></td>
+                                <td th:text="${msg.data['bargeFrom']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['from'])}">
+                                <td th:text="起运港"></td>
+                                <td th:text="${msg.data['from']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['to'])}">
+                                <td th:text="卸货港"></td>
+                                <td th:text="${msg.data['to']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['delivery'])}">
+                                <td th:text="交货地"></td>
+                                <td th:text="${msg.data['delivery']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['boxInfos'])}">
+                                <td th:text="箱量"></td>
+                                <td th:text="${msg.data['boxInfos'][0][quality]}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['boxInfos'])}">
+                                <td th:text="箱型"></td>
+                                <td th:text="${msg.data['boxInfos'][0][type]}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['portCutOff'])}">
+                                <td th:text="截关时间"></td>
+                                <td th:text="${msg.data['portCutOff']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['etd'])}">
+                                <td th:text="开航时间"></td>
+                                <td th:text="${msg.data['etd']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['bargeEtd'])}">
+                                <td th:text="驳船开航时间"></td>
+                                <td th:text="${msg.data['bargeEtd']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['orderCutOff'])}">
+                                <td th:text="截单时间"></td>
+                                <td th:text="${msg.data['orderCutOff']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['eta'])}">
+                                <td th:text="到港时间"></td>
+                                <td th:text="${msg.data['eta']}"></td>
+                            </tr>
+                            <tr th:if="${not #lists.isEmpty(msg.data['bargeEta'])}">
+                                <td th:text="驳船到港时间"></td>
+                                <td th:text="${msg.data['bargeEta']}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row" th:if="${not #lists.isEmpty(msg) && msg.status eq 1}">
+                <hr style="margin-top:0px; FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%"
+                    color="#76d275">
+                <div class="col-4">
+                    <p>错误提示:</p>
+                    <p th:text="${msg.errorMessage}"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--模态框-->
+<div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<script th:inline="javascript">
+    /**
+     * 上传文件后在本页面显示上传的文件名
+     */
+    $(function () {
+        var status = $("#status").val();
+        if (status) {
+            $("#fileName").val($("#current").val());
+        } else {
+            $("#fileName").val($("#error").val());
+        }
+    });
+</script>
+</body>
+</html>

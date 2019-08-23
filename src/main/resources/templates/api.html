@@ -1,0 +1,674 @@
+<!doctype html>
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name=Generator content="Microsoft Word 15 (filtered)">
+    <meta charset="UTF-8">
+    <title>API开发文档</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/fileupload.css}" rel="stylesheet">
+    <link th:href="@{/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <style>
+        <!--
+        /* Font Definitions */
+        @font-face {
+            font-family: "Cambria Math";
+            panose-1: 2 4 5 3 5 4 6 3 2 4;
+        }
+
+        @font-face {
+            font-family: 等线;
+            panose-1: 2 1 6 0 3 1 1 1 1 1;
+        }
+
+        @font-face {
+            font-family: "\@等线";
+            panose-1: 2 1 6 0 3 1 1 1 1 1;
+        }
+
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            font-size: 10.5pt;
+            font-family: 等线;
+        }
+
+        h1 {
+            mso-style-link: "标题 1 字符";
+            margin-top: 17.0pt;
+            margin-right: 0cm;
+            margin-bottom: 16.5pt;
+            margin-left: 0cm;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            line-height: 240%;
+            page-break-after: avoid;
+            font-size: 22.0pt;
+            font-family: 等线;
+        }
+
+        p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            text-indent: 21.0pt;
+            font-size: 10.5pt;
+            font-family: 等线;
+        }
+
+        span
+
+        .1
+        {
+            mso-style-name: "标题 1 字符"
+        ;
+            mso-style-link: "标题 1"
+        ;
+            font-weight: bold
+        ;
+        }
+        .MsoChpDefault {
+            font-family: 等线;
+        }
+
+        /* Page Definitions */
+        @page WordSection1 {
+            size: 595.3pt 841.9pt;
+            margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+            layout-grid: 15.6pt;
+        }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+
+        /* List Definitions */
+        ol {
+            margin-bottom: 0cm;
+        }
+
+        ul {
+            margin-bottom: 0cm;
+        }
+
+        -->
+    </style>
+
+</head>
+
+<body lang=ZH-CN style='text-justify-trim:punctuation'>
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">物流表单智能识别</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">首页 </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="api.html">API文档</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="div-document">
+    <div class=WordSection1 style='layout-grid:15.6pt'>
+    <p class=MsoListParagraph align=left style='margin-left:18.0pt;text-align:left;
+text-indent:-18.0pt'><b><span lang=EN-US style='font-size:16.0pt'>1.<span
+            style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></b><b><span
+            style='font-size:16.0pt'>文件上传</span></b></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.1</span><span style='font-size:12.0pt'>请求地址</span></p>
+
+    <table class=MsoTable15Grid1LightAccent3 border=1 cellspacing=0 cellpadding=0
+           width=558 style='width:418.2pt;border-collapse:collapse;border:none'>
+        <tr style='height:14.9pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-bottom:solid #C9C9C9 1.5pt;background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;
+  height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%'>操作</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>协议</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>方式</span></b></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%;color:black'>URL</span></b><b><span style='font-size:12.0pt;line-height:
+  300%;color:black'>全径</span></b></p>
+            </td>
+        </tr>
+        <tr style='height:42.55pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:42.55pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><b><span
+                        lang=EN-US style='font-size:12.0pt'>parseForm</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:42.55pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        lang=EN-US style='font-size:12.0pt'>HTTP</span></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:42.55pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        lang=EN-US style='font-size:12.0pt'>POST</span></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:42.55pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:18.0pt'><span lang=EN-US style='font-size:12.0pt'>/api/parseForm</span></p>
+            </td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.2</span><span style='font-size:12.0pt'>请求参数</span></p>
+
+    <table class=MsoTable15Grid1LightAccent3 border=1 cellspacing=0 cellpadding=0
+           width=558 style='width:418.2pt;border-collapse:collapse;border:none'>
+        <tr style='height:14.9pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-bottom:solid #C9C9C9 1.5pt;background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;
+  height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%'>参<span
+                        style='color:black'>数名</span></span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>必填</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>字段类型</span></b></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>描述</span></b></p>
+            </td>
+        </tr>
+        <tr style='height:30.6pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><b><span
+                        lang=EN-US style='font-size:12.0pt'>file</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        style='font-size:12.0pt'>是</span></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        lang=EN-US style='font-size:12.0pt'>file</span></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:18.0pt'><span lang=EN-US style='font-size:12.0pt'>file</span><span
+                        style='font-size:12.0pt'>包含的数据文件<span lang=EN-US>(</span>最大文件<span
+                        lang=EN-US>10MB)</span></span></p>
+            </td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.3</span><span style='font-size:12.0pt'>返回数据</span></p>
+
+    <table class=MsoTable15Grid1LightAccent3 border=1 cellspacing=0 cellpadding=0
+           width=558 style='width:418.2pt;border-collapse:collapse;border:none'>
+        <tr style='height:14.9pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-bottom:solid #C9C9C9 1.5pt;background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;
+  height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%'>序号</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>返回值</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>中文名称</span></b></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt;height:14.9pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>备注</span></b></p>
+            </td>
+        </tr>
+        <tr style='height:30.6pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><b><span
+                        lang=EN-US style='font-size:12.0pt'>1</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        lang=EN-US style='font-size:12.0pt'>status</span></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        style='font-size:12.0pt'>请求状态码</span></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:18.0pt'><span lang=EN-US style='font-size:12.0pt'>0</span><span
+                        style='font-size:12.0pt'>表示成功</span></p>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:18.0pt'><span style='font-size:12.0pt'>非<span lang=EN-US>0</span>表示失败</span></p>
+            </td>
+        </tr>
+        <tr style='height:30.6pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><b><span
+                        lang=EN-US style='font-size:12.0pt'>2</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        lang=EN-US style='font-size:12.0pt'>data</span></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        style='font-size:12.0pt'>返回数据</span></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:18.0pt'><span lang=EN-US style='font-size:12.0pt'>JSON</span><span
+                        style='font-size:12.0pt'>数据，返回用户请求的数据</span></p>
+            </td>
+        </tr>
+        <tr style='height:30.6pt'>
+            <td width=145 valign=top style='width:108.4pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><b><span
+                        lang=EN-US style='font-size:12.0pt'>3</span></b></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        lang=EN-US style='font-size:12.0pt'>errorMessage</span></p>
+            </td>
+            <td width=144 valign=top style='width:108.25pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm'><span
+                        style='font-size:12.0pt'>错误信息</span></p>
+            </td>
+            <td width=124 valign=top style='width:93.3pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:30.6pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:18.0pt'><span style='font-size:12.0pt'>可选信息，只有发生错误时才返回，装载发生错误的具体信息</span></p>
+            </td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.4</span><span style='font-size:12.0pt'>字段含义</span></p>
+
+    <table class=MsoTable15Grid1LightAccent3 border=1 cellspacing=0 cellpadding=0
+           style='border-collapse:collapse;border:none'>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-bottom:solid #C9C9C9 1.5pt;background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%'>字段名称</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:solid #DBDBDB 1.0pt;
+  border-left:none;border-bottom:solid #C9C9C9 1.5pt;border-right:solid #DBDBDB 1.0pt;
+  background:#D0CECE;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span style='font-size:12.0pt;line-height:300%;
+  color:black'>字段含义</span></b></p>
+            </td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>shipCompany</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>船公司</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>bookingNo</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>提单号</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>bargeShipName</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>驳船船名</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>bargeLine</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>驳船航次</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>shipName</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>船名</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>line</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>航次</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>bargeFrom</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>驳船起运港</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>from</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>起运港</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>to</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>卸货港</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>delivery</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>交货地</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 rowspan=2 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>boxInfos</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    lang=EN-US style='color:black'>type</span><span style='color:black'>：</span><span
+                    style='font-family:等线;color:black'>箱型</span></pre></td>
+        </tr>
+        <tr>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    lang=EN-US style='color:black'>quality</span><span style='color:black'>：</span><span
+                    style='font-family:等线;color:black'>箱量</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>portCutOff</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>截关时间</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>etd</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>开航时间</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>bargeEtd</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>驳船开航时间</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>orderCutOff</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>截单时间</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>eta</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>到港时间</span></pre></td>
+        </tr>
+        <tr>
+            <td width=284 valign=top style='width:213.05pt;border:solid #DBDBDB 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+                <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm;
+  line-height:300%'><b><span lang=EN-US style='font-size:12.0pt;line-height:
+  300%'>bargeEta</span></b></p>
+            </td>
+            <td width=273 valign=top style='width:204.75pt;border-top:none;border-left:
+  none;border-bottom:solid #DBDBDB 1.0pt;border-right:solid #DBDBDB 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'><pre style='line-height:300%;background:white'><span
+                    style='font-family:等线;color:black'>驳船到港时间</span></pre></td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.5</span><span style='font-size:12.0pt'>请求<span
+            lang=EN-US>URL</span>实例</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'>
+
+    <table cellpadding=0 cellspacing=0>
+        <tr>
+            <td width=1 height=0></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><img width=555 height=170 th:src="@{/images/api-upload01.jpg}"></td>
+        </tr>
+    </table>
+
+    <br clear=ALL>
+    <span lang=EN-US style='font-size:12.0pt'>1.6</span><span style='font-size:
+12.0pt'>返回数据实例</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.6.1</span><span style='font-size:12.0pt'>成功返回</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><img
+            width=554 height=320 th:src="@{/images/api-upload02.jpg}"><br clear=ALL>
+    </p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>1.6.2</span><span style='font-size:12.0pt'>失败返回</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'><span
+            lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+    <p class=MsoNormal align=left style='text-align:left;line-height:18.0pt'>
+
+    <table cellpadding=0 cellspacing=0 align=left>
+        <tr>
+            <td width=1 height=0></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><img width=554 height=100 th:src="@{/images/api-upload03.jpg}"></td>
+        </tr>
+    </table>
+
+    <br clear=ALL>
+    </p>
+
+</div>
+</div>
+
+</body>
+
+</html>

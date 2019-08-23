@@ -1,0 +1,79 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.form-div{
+    width: 1000px;
+    margin-left: 20px;
+    margin-top: 80px;
+}
+.form-table{
+    width: 1000px;
+}
+.form-form{
+    margin: auto;
+    margin-top: 0px;
+}
+.btn-border{
+    border: 0.5px solid gray;
+}
+.btn-select{
+    float: left;
+}
+.btn-selsub{
+    position: relative;
+}
+.btn-upload{
+    float: left;
+}
+.bg-green{
+    background-color: #43a047;
+}
+.btn-secondary {
+    color: black;
+    background-color: white;
+    border-color: #6c757d
+}
+.div-table{
+    margin-top: 14px;
+}
+.container-fluid{
+    margin-top: -8px;
+}
+.div-document{
+    width: 800px;
+    margin: auto;
+    margin-top: 80px;
+}
+.p-description{
+    margin-top: 15px;
+}
+.p-url{
+    font-weight: 600;
+    font-size: 25px;
+}
+.p-uri{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.table-distance{
+    margin-top: 20px;
+}
+
+.select-control {
+    display: block;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    text-align: left;
+}

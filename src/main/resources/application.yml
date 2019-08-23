@@ -1,0 +1,28 @@
+server:
+  port: 8088
+#设置应用的日志级别和路径
+logging:
+  level:
+    com:
+      el: INFO
+#设定thymeleaf
+thymeleaf:
+  #thymeleaf对html的检查过于严格，设置spring.thymeleaf.mode=LEGACYHTML5
+  mode: LEGACYHTML5
+  cache: false
+  prefix: classpath:/templates/
+
+velocity:
+  cache: false
+  charset: UTF-8
+  content-type: text/html;charset=UTF-8
+  enabled: true
+  resourceLoaderPath: classpath:/
+  prefix:
+  suffix: .vm
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB

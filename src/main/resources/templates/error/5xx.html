@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>物流表单智能识别</title>
+    <style>
+        body{
+            color: black;
+            font-size: 14px;
+            text-align: center;
+        }
+        .dialog{
+            width: 100%;
+            height: 400px;
+            margin: 80px auto 0 auto;
+            background: url(/static/images/404.png) no-repeat center;
+        }
+        .dialog h1{
+            font-size: 22px;
+            color: black;
+            line-height: 1.5em;
+            padding-top: 370px;
+            margin-right:50px;
+        }
+        .dialog p{
+            margin-top:10px;
+            margin-right:50px;
+        }
+        .dialog p a{
+            color: #ff9900;
+            font-size:16px;
+        }
+        .dialog p a:hover{
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+<div class="dialog">
+    <h1 th:text="${errorMsg}"></h1>
+    <p>请点击 <a th:href="@{/}">这里</a> 返回首页！</p>
+</div>
+</body>
+</html>

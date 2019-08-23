@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <!-- 简易元素的定义 -->
+    <xs:element name="img"  type="xs:string"/>
+    <xs:element name="td" type="xs:string"/>
+    <xs:element name="name" type="xs:string"/>
+    <!-- 属性的定义 -->
+    <xs:attribute name="orderid" type="xs:string"/>
+
+    <!-- 复合元素的定义 -->
+    <xs:element name="title">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element ref="name"  minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="img"  minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="table"  minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="second-title"  minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="second-title">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element ref="third-title" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="name" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="img" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="third-title">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="img" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="table">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tr" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="td"  minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="body">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="title" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
